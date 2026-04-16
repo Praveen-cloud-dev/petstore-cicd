@@ -36,6 +36,11 @@ import org.mybatis.jpetstore.service.OrderService;
  */
 @SessionScope
 public class OrderActionBean extends AbstractActionBean {
+  private Order order = new Order();
+  private boolean shippingAddressRequired;
+  private boolean confirmed;
+  private List<Order> orderList;
+  private String message;
 
   private static final long serialVersionUID = -6171288227470176272L;
 
@@ -50,10 +55,7 @@ public class OrderActionBean extends AbstractActionBean {
   @SpringBean
   private transient OrderService orderService;
 
-  private Order order = new Order();
-  private boolean shippingAddressRequired;
-  private boolean confirmed;
-  private List<Order> orderList;
+
 
   static {
     CARD_TYPE_LIST = Collections.unmodifiableList(Arrays.asList("Visa", "MasterCard", "American Express"));
@@ -98,6 +100,7 @@ public class OrderActionBean extends AbstractActionBean {
   public List<Order> getOrderList() {
     return orderList;
   }
+
 
   /**
    * List orders.
@@ -193,5 +196,12 @@ public class OrderActionBean extends AbstractActionBean {
     confirmed = false;
     orderList = null;
   }
+  public String getMessage() {
+  return message;
+}
+
+public void setMessage(String message) {
+  this.message = message;
+}
 
 }
