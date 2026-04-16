@@ -156,7 +156,7 @@ public class OrderActionBean extends AbstractActionBean {
 
       setMessage("Thank you, your order has been submitted.");
 
-      return new ForwardResolution(VIEW_ORDER);
+      return new ForwardResolution("/WEB-INF/jsp/order/OrderSuccess.jsp");
     } else {
       setMessage("An error occurred processing your order (order was null).");
       return new ForwardResolution(ERROR);
